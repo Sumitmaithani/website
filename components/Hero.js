@@ -8,19 +8,20 @@ import Heading from './typography/Heading'
 import Paragraph from './typography/Paragraph'
 import { SearchButton } from './AlgoliaSearch';
 import IconLoupe from './icons/Loupe';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
 
 export default function Hero({ className = ''}) {
+  const { t } = useTranslation('common');
   return (
     <>
       <AnnouncementHero className='my-4' />
       <header className={`px-2 mt-12 ${className}`}>
         <div className="text-center">
           <Heading level="h1" typeStyle="heading-xl" className="mb-4">
-            Building the future of {` `}
-            <span className="block md:-mt-4">
-              {" "}
-              Event-Driven Architectures (EDA)
-            </span>
+          {t('hero')}
+           
           </Heading>
           <Heading level="h2" typeStyle="body-lg" textColor="text-gray-700" className="mb-10 max-w-4xl mx-auto">
             Open-Source tools to easily build and maintain your event-driven
@@ -65,4 +66,13 @@ export default function Hero({ className = ''}) {
       </header>
     </>
   );
+}
+
+export async function getStaticProps({ locale }) {
+	return {
+		props: {
+			...(await serverSideTranslations(locale, ['common'])),
+			// Will be passed to the page component as props
+		},
+	}
 }
