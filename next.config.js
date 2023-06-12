@@ -19,6 +19,8 @@ const withMDX = require('@next/mdx')({
     rehypePlugins: [],
   },
 })
+
+
 module.exports = withMDX({
   pageExtensions: ['js', 'md'],
   eslint: {
@@ -35,4 +37,9 @@ module.exports = withMDX({
 
     return config
   },
+  i18n:{
+		locales: ['en', 'fr'],
+    defaultLocale: 'en',
+    localeDetection: false
+  }
 })

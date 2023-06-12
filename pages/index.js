@@ -24,8 +24,16 @@ import GoogleCalendarButton from '../components/buttons/GoogleCalendarButton';
 import ICSFileButton from '../components/buttons/ICSFileButton';
 import SubscribeButton from '../components/buttons/SubscribeButton';
 import NewsroomSection from '../components/newsroom/NewsroomSection'
+import { useRouter } from 'next/router';
+import { FormattedMessage, useIntl } from 'react-intl';
+import Link from 'next/link'
 
-function HomePage() {
+function HomePage({dir}) {
+  const { locale, locales, push } = useRouter();
+  const intl = useIntl();
+
+  const title=intl.formatMessage({id:"hero"});
+
   return (
     <>
       <Head />
@@ -38,13 +46,25 @@ function HomePage() {
           <Hero className="mb-24" />
         </Container>
 
+        <h1>
+          {[...locales].sort().map((locale)=>(
+            <Link key={locale} href='/' locale={locale}>
+              <div>{locale}</div>
+            </Link>
+          ))}
+        </h1>
+
+        <h1>
+          <FormattedMessage id="hero" values={{b:(info)=> <b>{info}</b> }} />
+        </h1>
+
         <Container className="text-center pb-12" wide as="section">
           <Heading
             level="h3"
             typeStyle="heading-lg"
             className="mb-4"
           >
-            Adopted by the world leading brands
+            Adopted by the world leading brands {title}
           </Heading>
           <Paragraph className="mt-2 mb-20 md:w-2/3 md:mx-auto">
             These brands are already using AsyncAPI in production. Is your company using AsyncAPI and wants to be included in this list?
