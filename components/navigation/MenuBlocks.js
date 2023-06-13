@@ -11,7 +11,7 @@ export default function MenuBlocks ({
         items.map((item, index) => {
           const isExternalHref = item.href && item.href.startsWith('http');
           return (
-            <Link href={item.comingSoon ? '' : item.href} key={index}>
+            <Link href={item.comingSoon ? '' : item.href} key={index} locale={item.title ? item.title : ''}>
               <a 
                 className="-m-3 p-3 flex items-start space-x-4 rounded-lg hover:bg-gray-50 transition ease-in-out duration-150" 
                 target={isExternalHref ? "_blank" : undefined} 
