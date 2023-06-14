@@ -1,33 +1,55 @@
-import FlyoutMenu from './FlyoutMenu';
-import LanguageMenuItem from './LanguageMenuItem';
 import MenuBlocks from './MenuBlocks';
 import { useRouter } from 'next/router';
 
-import IconGithubOrganization from '../icons/GithubOrganization';
-import IconSlack from '../icons/Slack';
+import IndianFlag from '../icons/IndianFlag';
+import ChinaFlag from '../icons/ChinaFlag';
+import SpainFlag from '../icons/Spainflag';
+import FranceFlag from '../icons/FranceFlag';
+import USAFlag from '../icons/Usaflag';
 
 export default function LanguageMenu() {
   const { locales } = useRouter();
 
-  // const items = [...locales].sort();
-  console.log(locales[0]);
-
   const items = [
     {
-      icon: IconGithubOrganization,
-      title: locales[0],
+      icon: USAFlag,
+      title: 'English',
       href: '/',
       target: '',
-      description: '',
+      description: 'Hey there! 👋 Would you like to view this page in English',
       locale: locales[0],
     },
     {
-      icon: IconSlack,
-      title: locales[1],
+      icon: FranceFlag,
+      title: 'French',
       href: '/',
       target: '',
-      description: ``,
+      description: `Salut! 👋 Souhaitez-vous voir cette page en anglais`,
       locale: locales[1],
+    },
+    {
+      icon: ChinaFlag,
+      title: 'Chinese',
+      href: '/',
+      target: '',
+      description: `嘿！👋 你想用中文查看這個頁面嗎`,
+      locale: locales[2],
+    },
+    {
+      icon: IndianFlag,
+      title: 'Hindi',
+      href: '/',
+      target: '',
+      description: `सुनो! 👋क्या आप इस पेज को हिंदी में देखना चाहेंगे`,
+      locale: locales[3],
+    },
+    {
+      icon: SpainFlag,
+      title: 'Spanish',
+      href: '/',
+      target: '',
+      description: `¡Hola! 👋 ¿Te gustaría ver esta página en español?`,
+      locale: locales[4],
     },
   ];
 
